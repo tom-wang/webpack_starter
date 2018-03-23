@@ -1,0 +1,31 @@
+{
+  "name": "webpack_starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tom-wang/webpack_starter.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tom-wang/webpack_starter/issues"
+  },
+  "homepage": "https://github.com/tom-wang/webpack_starter#readme",
+  "devDependencies": {
+    "loader-utils": "^1.1.0",
+    "schema-utils": "^0.4.5",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.12"
+  },
+  "dependencies": {
+    "css-loader": "^0.28.11",
+    "file-loader": "^1.1.11",
+    "style-loader": "^0.20.3",
+    "url-loader": "^1.0.1"
+  }
+}
