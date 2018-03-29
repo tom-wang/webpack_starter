@@ -1,9 +1,12 @@
 const path = require('path');
+const CommonPlugin = require('./plugins/CommonPlugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = { 
     entry: './src/app.js',
     output: {
-        filename: './dist/bundle.js'
+        path: path.join(__dirname, 'dist'),
+        filename: 'bundle.js'
     },  
     mode: 'development', //production | development
     module: {
@@ -70,6 +73,10 @@ module.exports = {
             }
         ]
     },
+    plugins: [
+        new HtmlWebpackPlugin(),
+        new CommonPlugin()
+    ],
     // 作用于模块的加载，比如import/require等场景
     // 先使用alias替换，再在modules里的目录中查找
     // resolve.modules
