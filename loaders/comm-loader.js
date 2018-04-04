@@ -14,6 +14,8 @@ const schema = {
 }
 
 module.exports = function(source) {
+    if (this.cacheable) this.cacheable();
+    console.log('comm-loader #17');
     // 使用loader-utils/schema-utils提供的便捷操作
     const options = getOptions(this);
     validateOptions(schema, options, 'Example Loader');
@@ -25,7 +27,8 @@ module.exports = function(source) {
 
     // 如果要往多个文件中插入公共代码，不需要每个文件都插入，生成一个公共文件，然后在模块内生成调用require即可
 
-    return `export default ${ JSON.stringify(source) }`;
+    const callback = this.async();
+    callback(null, `export default ${ source }`);
 }
 
 //默认情况下传给loader的内容是字符串类型，如果需要传递Buffer类型，则设置raw为true

@@ -35,14 +35,14 @@ class CommonPlugin {
     apply(compiler) {
         Object.keys(compiler.hooks).forEach((hookName) => {
             compiler.hooks[hookName].tap(hookName, function() {
-                console.log(hookName);
+                //console.log(hookName);
             });
         });
 
         compiler.hooks.make.tap('make', compilation => {
             Object.keys(compilation.hooks).forEach(hookName => {
                 compilation.hooks[hookName].tap(hookName, function() {
-                    console.log(hookName);
+                    //console.log(hookName);
                 })
             })
         })
@@ -53,7 +53,7 @@ class CommonPlugin {
             };
         });
         compiler.hooks.afterEmit.tap('test', compilation => {
-            console.log(compilation);
+            //console.log(compilation);
         });
         /*
         compiler.hooks.environment.tap('testEnvironment', () => {

@@ -1,6 +1,7 @@
 const path = require('path');
 const CommonPlugin = require('./plugins/CommonPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = { 
     entry: './src/app.js',
@@ -9,6 +10,11 @@ module.exports = {
         filename: 'bundle.js'
     },  
     mode: 'development', //production | development
+    devtool: 'inline-source-map',
+    devServer: {
+        contentBase: './dist',
+        hot: true
+    },
     module: {
         rules: [
             {
@@ -29,6 +35,12 @@ module.exports = {
             {
                 test: /\.comm$/, 
                 use: [
+                    {
+                        loader: 'comm-pitch-loader',
+                        options: {
+                            test: 'aaa'
+                        }
+                    },
                     {
                         loader: 'comm-loader',
                         options: {
@@ -75,7 +87,8 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin(),
-        new CommonPlugin()
+        new CommonPlugin(),
+        new webpack.HotModuleReplacementPlugin()
     ],
     // 作用于模块的加载，比如import/require等场景
     // 先使用alias替换，再在modules里的目录中查找
